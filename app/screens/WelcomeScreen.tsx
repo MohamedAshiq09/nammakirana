@@ -2,7 +2,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
     Image,
-    SafeAreaView,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -14,88 +13,114 @@ type WelcomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>NAMMA KIRANA</Text>
-        <Text style={styles.subtitle}>FRESH. SHOP LOCAL. SAVE BIG.</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>NAMMA KIRANA</Text>
+          <Text style={styles.subtitle}>FRESH. SHOP LOCAL. SAVE BIG.</Text>
+        </View>
         
         <View style={styles.groceryBagContainer}>
-          <Image 
-            source={require('../../assets/images/grocery-bag.png')} 
+          <Image
+            source={require('../assets/grocery-bag.png')}
             style={styles.groceryBag}
             resizeMode="contain"
           />
         </View>
-        
-        <TouchableOpacity 
+      </View>
+      
+      <View style={styles.bottomContainer}>
+        <TouchableOpacity
           style={styles.getStartedButton}
           onPress={() => navigation.navigate('Home')}
         >
           <Text style={styles.getStartedText}>Get Started</Text>
         </TouchableOpacity>
+        
+        <View style={styles.termsContainer}>
+          <Text style={styles.termsText}>By continuing, I accept the</Text>
+          <View style={styles.termsLinksContainer}>
+            <Text style={styles.termsLink}>Terms of Service</Text>
+            <Text style={styles.termsText}>     </Text>
+            <Text style={styles.termsLink}>Privacy Policy</Text>
+          </View>
+        </View>
       </View>
-      
-      <View style={styles.termsContainer}>
-        <Text style={styles.termsText}>
-          By continuing, I accept the Terms of Service & Privacy Policy
-        </Text>
-      </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#8CC152', // Updated to brighter green to match image
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  titleContainer: {
+    marginTop: '30%',
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 24,
+    fontSize: 42,
     fontWeight: 'bold',
-    color: '#333',
+    color: 'white',
+    textAlign: 'center',
     marginBottom: 10,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 20,
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   groceryBagContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    marginBottom: 20,
   },
   groceryBag: {
-    width: 200,
-    height: 200,
+    width: 600,
+    height: 600,
+  },
+  bottomContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 30,
   },
   getStartedButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: '#76B041',
     paddingVertical: 15,
-    paddingHorizontal: 40,
     borderRadius: 8,
-    marginTop: 20,
-    marginBottom: 30,
+    alignItems: 'center',
+    marginBottom: 20,
+    marginHorizontal: 20,
   },
   getStartedText: {
-    color: '#fff',
-    fontSize: 16,
+    color: 'white',
+    fontSize: 18,
     fontWeight: 'bold',
   },
   termsContainer: {
-    padding: 20,
     alignItems: 'center',
   },
   termsText: {
-    fontSize: 12,
-    color: '#999',
-    textAlign: 'center',
+    fontSize: 14,
+    color: '#333',
+  },
+  termsLinksContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  termsLink: {
+    fontSize: 14,
+    color: '#333',
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
 });
 

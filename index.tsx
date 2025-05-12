@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { registerRootComponent } from 'expo';
 import React from 'react';
 import 'react-native-gesture-handler';
-import App from './app';
+import App from './app/App'; // Changed from './app' to './App' to match the actual filename
 
 // Wrap the app with a single NavigationContainer at the root
 const RootApp = () => {
