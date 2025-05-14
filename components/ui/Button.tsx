@@ -1,70 +1,81 @@
-// components/ui/Button.tsx
-import { ClassNameValue } from 'nativewind/dist/style-sheet/types';
-import React from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+// components/ui/Input.tsx
+import { Feather } from '@expo/vector-icons';
+import React, { forwardRef } from 'react';
+import { Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native';
 
-interface ButtonProps extends TouchableOpacityProps {
-  label: string;
-  variant?: 'primary' | 'secondary' | 'outline' | 'link';
-  size?: 'sm' | 'md' | 'lg';
-  isLoading?: boolean;
-  className?: ClassNameValue;
+// Replace the problematic import with a simpler type definition
+type ClassNameValue = string;
+
+interface InputProps extends TextInputProps {
+  label?: string;
+  error?: string;
+  leftIcon?: keyof typeof Feather.glyphMap;
+  rightIcon?: keyof typeof Feather.glyphMap;
+  onRightIconPress?: () => void;
+  containerClassName?: ClassNameValue;
+  inputClassName?: ClassNameValue;
   labelClassName?: ClassNameValue;
+  errorClassName?: ClassNameValue;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  label,
-  variant = 'primary',
-  size = 'md',
-  isLoading = false,
-  className = '',
-  labelClassName = '',
-  disabled,
-  ...props
-}) => {
-  const baseClasses = 'flex-row items-center justify-center rounded-lg';
-  
-  const variantClasses = {
-    primary: 'bg-primary',
-    secondary: 'bg-secondary',
-    outline: 'bg-transparent border border-primary',
-    link: 'bg-transparent',
-  };
-  
-  const sizeClasses = {
-    sm: 'px-3 py-1.5',
-    md: 'px-4 py-2.5',
-    lg: 'px-6 py-3',
-  };
-  
-  const labelClasses = {
-    primary: 'text-white font-medium',
-    secondary: 'text-white font-medium',
-    outline: 'text-primary font-medium',
-    link: 'text-primary font-medium',
-  };
-  
-  const labelSizeClasses = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-  };
-  
-  return (
-    <TouchableOpacity
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabled || isLoading ? 'opacity-50' : ''} ${className}`}
-      disabled={disabled || isLoading}
-      {...props}
-    >
-      {isLoading ? (
-        <ActivityIndicator size="small" color={variant === 'outline' || variant === 'link' ? '#8CC84B' : '#FFFFFF'} />
-      ) : (
-        <Text className={`${labelClasses[variant]} ${labelSizeClasses[size]} ${labelClassName}`}>
-          {label}
-        </Text>
-      )}
-    </TouchableOpacity>
-  );
-};
+const Input = forwardRef<TextInput, InputProps>(
+  ({
+    label,
+    error,
+    leftIcon,
+    rightIcon,
+    onRightIconPress,
+    containerClassName = '',
+    inputClassName = '',
+    labelClassName = '',
+    errorClassName = '',
+    ...props
+  }, ref) => {
+    return (
+      <View className={`w-full mb-4 ${containerClassName}`}>
+        {label && (
+          <Text className={`text-gray-700 font-medium mb-1 ${labelClassName}`}>
+            {label}
+          </Text>
+        )}
+        
+        <View className="relative w-full">
+          {leftIcon && (
+            <View className="absolute left-3 top-1/2 -translate-y-1/2 z-10">
+              <Feather name={leftIcon} size={18} color="#6B7280" />
+            </View>
+          )}
+          
+          <TextInput
+            ref={ref}
+            className={`w-full bg-white border rounded-lg py-2.5 px-3 text-gray-800
+              ${leftIcon ? 'pl-10' : ''}
+              ${rightIcon ? 'pr-10' : ''}
+              ${error ? 'border-red-500' : 'border-gray-300'}
+              ${inputClassName}`}
+            placeholderTextColor="#9CA3AF"
+            {...props}
+          />
+          
+          {rightIcon && (
+            <TouchableOpacity
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10"
+              onPress={onRightIconPress}
+              disabled={!onRightIconPress}
+            >
+              <Feather name={rightIcon} size={18} color="#6B7280" />
+            </TouchableOpacity>
+          )}
+        </View>
+        
+        {error && (
+          <Text className={`text-red-500 text-sm mt-1 ${errorClassName}`}>
+            {error}
+          </Text>
+        )}
+      </View>
+    );
+  }
+);
 
-export default Button;
+export default Input;
