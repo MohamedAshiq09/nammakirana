@@ -1,8 +1,10 @@
 // components/ui/Input.tsx
 import { Feather } from '@expo/vector-icons';
-import { ClassNameValue } from 'nativewind/dist/style-sheet/types';
 import React, { forwardRef } from 'react';
-import { Text, TextInput, TextInputProps, View } from 'react-native';
+import { Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native';
+
+// Replace the problematic import with a proper type definition
+type ClassNameValue = string;
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -17,17 +19,17 @@ interface InputProps extends TextInputProps {
 }
 
 const Input = forwardRef<TextInput, InputProps>(
-  ({ 
-    label, 
-    error, 
-    leftIcon, 
+  ({
+    label,
+    error,
+    leftIcon,
     rightIcon,
     onRightIconPress,
     containerClassName = '',
     inputClassName = '',
     labelClassName = '',
     errorClassName = '',
-    ...props 
+    ...props
   }, ref) => {
     return (
       <View className={`w-full mb-4 ${containerClassName}`}>
@@ -46,9 +48,9 @@ const Input = forwardRef<TextInput, InputProps>(
           
           <TextInput
             ref={ref}
-            className={`w-full bg-white border rounded-lg py-2.5 px-3 text-gray-800 
-              ${leftIcon ? 'pl-10' : ''} 
-              ${rightIcon ? 'pr-10' : ''} 
+            className={`w-full bg-white border rounded-lg py-2.5 px-3 text-gray-800
+              ${leftIcon ? 'pl-10' : ''}
+              ${rightIcon ? 'pr-10' : ''}
               ${error ? 'border-red-500' : 'border-gray-300'}
               ${inputClassName}`}
             placeholderTextColor="#9CA3AF"
@@ -56,12 +58,13 @@ const Input = forwardRef<TextInput, InputProps>(
           />
           
           {rightIcon && (
-            <View 
+            <TouchableOpacity
               className="absolute right-3 top-1/2 -translate-y-1/2 z-10"
-              onTouchEnd={onRightIconPress ? onRightIconPress : undefined}
+              onPress={onRightIconPress}
+              disabled={!onRightIconPress}
             >
               <Feather name={rightIcon} size={18} color="#6B7280" />
-            </View>
+            </TouchableOpacity>
           )}
         </View>
         

@@ -8,7 +8,7 @@ export default function Index() {
   const isAuthenticated = false; // Replace with actual auth check
 
   if (isAuthenticated) {
-    return <Redirect href="/App" />;
+    return <Redirect href="/(app)" />;  // Changed from "/App" to "/(app)"
   }
 
   return <Redirect href="/(auth)/welcome" />;
