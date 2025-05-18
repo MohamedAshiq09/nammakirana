@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useOrder } from "../../../contexts/OrderContext";
+import { useOrder } from "@/contexts/OrderContent";
 
 // Mock address data
 const addresses = [
@@ -70,7 +70,7 @@ export default function CheckoutScreen() {
     setIsLoading(true);
     try {
       await placeOrder(address, selectedPayment);
-      router.push("/order-confirmation");
+      router.push("../order-confirmation");
     } catch (error) {
       Alert.alert("Error", "Failed to place order. Please try again.");
     } finally {
@@ -101,7 +101,7 @@ export default function CheckoutScreen() {
               <Text className="text-lg font-semibold text-gray-800">
                 Delivery Address
               </Text>
-              <TouchableOpacity onPress={() => router.push("/addresses")}>
+              <TouchableOpacity onPress={() => router.push("../addresses")}>
                 <Text className="text-primary font-medium">+ Add New</Text>
               </TouchableOpacity>
             </View>

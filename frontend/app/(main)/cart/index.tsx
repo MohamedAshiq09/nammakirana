@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useOrder } from "../../../contexts/OrderContext";
+import { useOrder } from "@/contexts/OrderContent";
 
 export default function CartScreen() {
   const { cart, removeFromCart, updateCartItem, getCartTotal } = useOrder();
@@ -180,7 +180,7 @@ export default function CartScreen() {
           <View className="p-4 border-t border-gray-200">
             <TouchableOpacity
               className="bg-primary py-3 rounded-lg items-center"
-              onPress={() => router.push("/checkout")}
+              onPress={() => router.push("../checkout")}
             >
               <Text className="text-white font-bold">
                 Proceed to Checkout • ₹{getCartTotal() + 30}

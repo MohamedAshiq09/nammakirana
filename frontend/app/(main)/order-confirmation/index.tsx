@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useOrder } from "../../../contexts/OrderContext";
+import { useOrder } from "@/contexts/OrderContent";
 
 export default function OrderConfirmationScreen() {
   const { currentOrder } = useOrder();

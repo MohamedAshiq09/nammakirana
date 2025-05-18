@@ -58,7 +58,7 @@ export default function ProductDetailScreen() {
         <Text className="flex-1 text-center text-lg font-semibold">
           Product Details
         </Text>
-        <TouchableOpacity onPress={() => router.push("/cart")}>
+        <TouchableOpacity onPress={() => router.push("../cart")}>
           <Feather name="shopping-bag" size={24} color="#333" />
         </TouchableOpacity>
       </View>
@@ -182,7 +182,7 @@ export default function ProductDetailScreen() {
           className="bg-primary py-3 rounded-lg items-center"
           onPress={() => {
             // Add to cart functionality
-            router.push("/cart");
+            router.push("../cart");
           }}
         >
           <Text className="text-white font-bold">
