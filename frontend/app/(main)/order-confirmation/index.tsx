@@ -234,7 +234,7 @@ export default function OrderConfirmationScreen() {
           <View className="w-full flex-row justify-between mt-6">
             <TouchableOpacity
               className="flex-1 py-3 rounded-lg border border-primary mr-2 items-center"
-              onPress={() => router.push("/order-tracking")}
+              onPress={() => router.push("../order-tracking")}
             >
               <Text className="text-primary font-semibold">Track Order</Text>
             </TouchableOpacity>

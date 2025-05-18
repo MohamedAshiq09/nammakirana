@@ -12,8 +12,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import CategoryCard from "../../components/home/CategoryCard";
-import DealBanner from "../../components/home/DealBanner";
+import CategoryCard from "@/components/home/CategoryCard";
+import DealBanner from "@/components/home/DealBanner";
 
 // Mock data for testing
 const mockCategories = [
@@ -112,7 +112,7 @@ export default function HomeScreen() {
 
             <TouchableOpacity
               className="w-10 h-10 bg-gray-100 rounded-full items-center justify-center"
-              onPress={() => router.push({ pathname: "/notifications" })}
+              onPress={() => router.push("../notifications")}
             >
               <Feather name="bell" size={20} color="#4B5563" />
             </TouchableOpacity>
