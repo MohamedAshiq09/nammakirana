@@ -9,6 +9,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
+import { OrderProvider } from "../contexts/OrderContext";
 
 // Keep the splash screen visible while fonts are loading
 SplashScreen.preventAutoHideAsync();
@@ -42,17 +43,19 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(auth)/welcome" options={{ animation: "fade" }} />
-      <Stack.Screen
-        name="(auth)/signup"
-        options={{ animation: "slide_from_right" }}
-      />
-      <Stack.Screen
-        name="(auth)/login"
-        options={{ animation: "slide_from_right" }}
-      />
-      <Stack.Screen name="(main)" options={{ animation: "fade" }} />
-    </Stack>
+    <OrderProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)/welcome" options={{ animation: "fade" }} />
+        <Stack.Screen
+          name="(auth)/signup"
+          options={{ animation: "slide_from_right" }}
+        />
+        <Stack.Screen
+          name="(auth)/login"
+          options={{ animation: "slide_from_right" }}
+        />
+        <Stack.Screen name="(main)" options={{ animation: "fade" }} />
+      </Stack>
+    </OrderProvider>
   );
 }

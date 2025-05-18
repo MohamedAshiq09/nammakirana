@@ -1,4 +1,3 @@
-// app/(main)/cart/index.tsx
 import { Feather } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
