@@ -2,7 +2,8 @@
 import { Feather } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import {
   Image,
   SafeAreaView,
@@ -20,22 +21,22 @@ const mockCategories = [
   {
     id: "1",
     name: "Fruits & Veggies",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "2",
     name: "Dairy & Breakfast",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "3",
     name: "Snacks & Beverages",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "4",
     name: "Household",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
 ];
 
@@ -43,13 +44,13 @@ const mockFeaturedItems = [
   {
     id: "1",
     title: "Fresh Picks",
-    image: require("../../assets/images/placeholder.png"),
+    image: require("../../../assets/images/placeholder.png"),
     subtitle: "Fresh fruits and vegetables",
   },
   {
     id: "2",
     title: "Weekend Deals",
-    image: require("../../assets/images/placeholder.png"),
+    image: require("../../../assets/images/placeholder.png"),
     subtitle: "Up to 30% off on groceries",
   },
 ];
@@ -61,14 +62,14 @@ const popularProducts = [
     price: 40,
     discountPrice: 35,
     unit: "kg",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "102",
     name: "Fresh Onions",
     price: 30,
     unit: "kg",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "103",
@@ -76,14 +77,14 @@ const popularProducts = [
     price: 120,
     discountPrice: 99,
     unit: "500g",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
   {
     id: "104",
     name: "Whole Wheat Atta",
     price: 55,
     unit: "kg",
-    imageUrl: require("../../assets/images/placeholder.png"),
+    imageUrl: require("../../../assets/images/placeholder.png"),
   },
 ];
 
@@ -191,7 +192,7 @@ export default function HomeScreen() {
                   </View>
                 </View>
                 <Image
-                  source={require("../../assets/images/placeholder.png")}
+                  source={require("../../../assets/images/placeholder.png")}
                   className="w-24 h-24 rounded-lg"
                 />
               </View>

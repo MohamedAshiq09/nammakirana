@@ -1,50 +1,148 @@
-# Welcome to your Expo app 👋
+# Namma Kirana
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📱 About The Project
 
-## Get started
+Namma Kirana is a mobile application built with React Native and Expo that connects local grocery stores ("kirana" shops) with customers in their neighborhood. The app aims to digitize the traditional shopping experience while preserving the personal touch of local businesses.
 
-1. Install dependencies
+## ✨ Features
 
+- **User Authentication**: Secure signup/login system
+- **Product Browsing**: Browse groceries by categories
+- **Search Functionality**: Easily find products
+- **Shopping Cart**: Add products and place orders
+- **Order Tracking**: Real-time updates on order status
+- **User Profiles**: Save addresses and preferences
+- **Multi-language Support**: Available in multiple regional languages
+
+## 🛠️ Built With
+
+- **Framework**: [React Native](https://reactnative.dev/)
+- **Development Platform**: [Expo](https://expo.dev/)
+- **Navigation**: [Expo Router](https://docs.expo.dev/router/introduction/)
+- **Styling**: [TailwindCSS](https://tailwindcss.com/) (via NativeWind)
+- **State Management**: [React Context API](https://reactjs.org/docs/context.html)
+- **Authentication**: Firebase Authentication
+- **Backend**: Firebase Firestore
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator or Android Emulator (optional for local development)
+
+### Installation
+
+1. **Clone the repository**
    ```bash
-   npm install
+   git clone https://github.com/MohamedAshiq09/namma-kirana.git
+   cd namma-kirana
    ```
 
-2. Start the app
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
+3. **Start the development server**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Run on a device or emulator**
+   - Press `i` to open in iOS simulator
+   - Press `a` to open in Android emulator
+   - Scan the QR code with the Expo Go app on your physical device
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📁 Project Structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+namma-kirana/
+├── app/                      # App screens using Expo Router
+│   ├── (auth)/               # Authentication screens
+│   │   ├── welcome.tsx       # Welcome screen
+│   │   ├── signup.tsx        # Signup screen
+│   │   └── login.tsx         # Login screen
+│   ├── (main)/               # Main app screens
+│   │   ├── index.tsx         # Home screen
+│   │   ├── search.tsx        # Search screen
+│   │   ├── categories/       # Category related screens
+│   │   │   ├── index.tsx     # All categories
+│   │   │   └── [category].tsx # Specific category
+│   │   ├── products/         # Product related screens
+│   │   │   └── [id].tsx      # Product details
+│   │   └── profile/          # User profile screens
+│   │       └── index.tsx     # Profile page
+│   ├── _layout.tsx           # Root layout configuration
+│   └── index.tsx             # Entry point (redirects to welcome or home)
+├── assets/                   # Static assets
+├── components/               # Reusable components
+├── constants/                # App constants
+├── hooks/                    # Custom hooks
+├── services/                 # API and service functions
+├── types/                    # TypeScript type definitions
+├── utils/                    # Utility functions
+├── store/                    # State management
+└── ...                       # Configuration files
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🔄 Workflow
 
-## Learn more
+1. **User Journey**
+   - Users start at the welcome screen and can sign up or log in
+   - After authentication, they are redirected to the home screen
+   - Users can browse categories, search for products, and view product details
+   - Products can be added to cart and orders can be placed
+   - Users can track their orders and manage their profile
 
-To learn more about developing your project with Expo, look at the following resources:
+2. **Data Flow**
+   - User authentication data is managed through authentication services
+   - Product data is fetched from backend services
+   - Shopping cart is managed through local state with persistence
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🧪 Testing
 
-## Join the community
+To run tests:
 
-Join our community of developers creating universal apps.
+```bash
+npm test
+# or
+yarn test
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📱 Building for Production
+
+To create a production build:
+
+```bash
+npx expo build:android
+# or
+npx expo build:ios
+```
+
+## 🚧 Roadmap
+
+- [ ] Implement payment gateway integration
+- [ ] Add real-time chat with shop owners
+- [ ] Develop shop owner companion app
+- [ ] Implement loyalty programs
+- [ ] Add voice search functionality
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
